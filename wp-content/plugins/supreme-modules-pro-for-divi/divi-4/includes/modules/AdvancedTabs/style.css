@@ -1,0 +1,55 @@
+.dsm-advanced-tabs-container .dsm_advanced_tabs_child.et_pb_module {
+  margin-bottom: 0px !important;
+}
+
+.dsm-advanced-tabs-container .dsm-advanced-tabs-wrapper {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.dsm-advanced-tabs-container .dsm-advanced-tabs-wrapper .dsm-tab {
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.dsm-advanced-tabs-container .dsm-advanced-tabs-wrapper .dsm-tab .dsm-image {
+  line-height: 0;
+}
+
+.dsm-advanced-tabs-container .dsm-advanced-tabs-wrapper .dsm-tab .dsm_icon {
+  display: block;
+  line-height: 1.3em;
+}
+
+.dsm-advanced-tabs-container .dsm-advanced-tabs-content-wrapper .dsm-content {
+  padding-bottom: 15px;
+}
+
+.dsm_advanced_tabs .dsm-advanced-tabs-container .dsm-advanced-tabs-content-wrapper .dsm-content-wrapper {
+  position: relative;
+  display: none;
+}
+
+.dsm-advanced-tabs-container .dsm-advanced-tabs-content-wrapper .dsm-content-wrapper.dsm-active {
+  display: flex;
+}
+
+.dsm-tab-active-state:not(dsm-active)>div:nth-child(2),
+.dsm-tab-active-state.dsm-active>div:first-child {
+  display: none;
+}
+
+.dsm-tab-active-state.dsm-active>div:nth-child(2) {
+  display: block;
+}
+.dsm-inner-content-wrapper{
+  z-index: 1;
+}
+.dsm-advanced-tabs-container .dsm-advanced-tabs-content-wrapper .dsm-inner-content-wrapper,
+.dsm-advanced-tabs-container .dsm-advanced-tabs-content-wrapper .dsm-inner-content {
+  width: 100%;
+}
