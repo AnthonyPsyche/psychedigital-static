@@ -17,7 +17,7 @@ STRIP_INLINE = re.compile(r"gtag\(|googletagmanager|monsterinsights|mi_track|dat
 
 HOST = r"(?:www\.)?psychedigital\.com"
 LIVE_RE = re.compile(
-    r"https?:(?:\\?/){2}" + HOST + r"(?P<path>(?:\\?/[^\s\"'<>()\\,;?#&|{}]*)*)(?P<q>\?[^\s\"'<>()\\]*)?")
+    r"(?:https?:)?(?:\\?/){2}" + HOST + r"(?P<path>(?:\\?/[^\s\"'<>()\\,;?#&|{}]*)*)(?P<q>\?[^\s\"'<>()\\]*)?")
 EXT_RE = re.compile(r"(?:https?:)?//(?P<host>fonts\.googleapis\.com|fonts\.gstatic\.com|code\.highcharts\.com)(?P<path>/[^\s\"'<>()\\]*)")
 
 assets = set()      # live paths to download (/wp-content/...)
@@ -125,14 +125,14 @@ def rewrite_anchors(text, out_file):
             if posixpath.splitext(p)[1]:
                 if p.startswith("/wp-content/"):
                     assets.add(p)
-                    return f'{hm.group(1)}{rel(out_file, p)}{frag}"'
+                    return f'{hm.group(1)}"{rel(out_file, p)}{frag}"'
                 return hm.group(0)
             if not p.endswith("/"):
                 p += "/"
             if p not in pages_seen:
                 pages_seen[p] = page_out(p)
                 page_queue.append(p)
-            return f'{hm.group(1)}{rel(out_file, "/" + page_out(p))}{frag}"'
+            return f'{hm.group(1)}"{rel(out_file, "/" + page_out(p))}{frag}"'
         tag = re.sub(r'(href=)"(/(?!/)[^"]*)"', lambda hm: f'{hm.group(1)}"{LIVE}{hm.group(2)}"', tag)  # root-relative -> absolute, then localised below
         return re.sub(r'(href=)"([^"]*)"', lambda hm: href(hm), tag)
     return re.sub(r"<a\b[^>]*>", a_tag, text)
